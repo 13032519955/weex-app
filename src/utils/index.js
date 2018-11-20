@@ -2,6 +2,12 @@
 const navigator = weex.requireModule('navigator')
 const modal = weex.requireModule('modal')
 
+/* export const imgUrl = function (icon) {
+  return WXEnvironment.platform === 'Web'
+    ? 'src/assets/image/' + icon
+    : require('../../assets/image/information.png');
+} */
+
 export default function (name) {
   return name
 }
@@ -14,9 +20,7 @@ const development = process.env.NODE_ENV === 'development';
  * @param {string} message 弹出框信息
  */
 export function toast(message) {
-  if (development) {
-    modal.toast({ message, duration: 1 })
-  }
+  modal.toast({ message, duration: 1 })
 }
 
 /** 页面跳转

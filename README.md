@@ -8,4 +8,23 @@ $ npm i node-sass sass-loader --save
 
 那么，你只需要将 `style` 标签改为： `<style lang="sass"><style>`.
 
-## css中的本地图片路径在打包后的问题
+## 使用本地图片
+要把图片转base64
+> npm install url-loader file-loader --save
+
+configs/webpack.common.conf.js对`rules`添加下面几句话
+```
+{
+    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+    use: [
+        {
+        loader: 'url-loader',
+        options: {
+            limit: 1295360,
+            name: '[name].[ext]'
+        }
+        }
+    ]
+}
+```
+

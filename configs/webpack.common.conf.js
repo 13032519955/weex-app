@@ -126,6 +126,18 @@ const webConfig = {
     // webpack 2.0 
     rules: useEslint.concat([
       {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1295360,
+              name: '[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
         test: /\.js$/,
         use: [{
           loader: 'babel-loader'
