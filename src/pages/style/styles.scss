@@ -1,5 +1,12 @@
 .icon {
-    height: $medium-size;
-    width: $medium-size;
-    margin: 0 10px;
-  }
+  height: $medium-size;
+  width: $medium-size;
+  margin: 0 10px;
+}
+.medium {
+  font-size: $medium-size;
+}
+
+.big {
+  font-size: $big-size;
+}

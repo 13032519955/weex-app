@@ -2,18 +2,16 @@
 const navigator = weex.requireModule('navigator')
 const modal = weex.requireModule('modal')
 
-/* export const imgUrl = function (icon) {
-  return WXEnvironment.platform === 'Web'
-    ? 'src/assets/image/' + icon
-    : require('../../assets/image/information.png');
-} */
-
 export default function (name) {
   return name
 }
 
+export const imgUrl = 'http://storage-proxy.emas-poc.com:30090/emas-poc-private.oss-cn-beijing.aliyuncs.com/eweex/app/upload/'
+
 // 是否是开发环境
 const development = process.env.NODE_ENV === 'development';
+
+export const isWeb = WXEnvironment.platform === 'Web';
 
 /**
  * 弹出框
@@ -30,7 +28,7 @@ export function jump(pageName) {
   const url = createLink(pageName, {
     param: 'abc'
   })
-  if (WXEnvironment.platform === 'Web') { // eslint-disable-line
+  if (isWeb) { // eslint-disable-line
     location.href = url
   } else {
     navigator.push({

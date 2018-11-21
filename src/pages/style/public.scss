@@ -5,6 +5,8 @@ $big-size: 32px;
 $full-size: 36px;
 
 $blue: #0F8DE8;
+$gray: #e5e5e5;
 
 @import './flex.scss';
 @import './styles.scss';
+@import './mixins.scss';
