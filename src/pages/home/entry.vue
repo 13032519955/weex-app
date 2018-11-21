@@ -7,14 +7,13 @@
             <image class="icon" :src="imgUrl + '521cd497-8f5a-4cac-b5a8-c4a58968978d/information.png'" />
         </cell>
         <cell>
-          <Carousel>
-            <div class="carousel-main">
-              <text class="text">1</text>
+          <slider class="slider" interval="3000" auto-play="false" offset-x-accuracy="0.9" infinite="false">
+            <div class="slider-pages" v-for="(item, i) in sliderList" :key="'slider-' + i">
+              <image class="img" :src="item.pictureUrl" />
+              <text class="title">{{item.title}}</text>
             </div>
-            <div class="carousel-main">
-              <text class="text">2</text>
-            </div>
-          </Carousel>
+            <indicator class="indicator"></indicator>
+          </slider>
         </cell>
         <cell class="flex-row-center nav-list">
           <div v-for="(item, i) of navList" 
@@ -25,7 +24,7 @@
           </div>
         </cell>
 
-        <cell class="flex-center">
+        <cell class="flex-center" @click="onJump">
           <div class="flex-center-both footer footer-top">
             <text class="medium">精选推荐</text>
             <text class="medium">更多</text>
@@ -56,14 +55,10 @@
 </template>
 
 <script>
-import { imgUrl } from "../../utils";
-import Carousel from "../../components/carousel/carousel.vue";
-import { navList, listData } from "./data.js";
+import { imgUrl, jump } from "../../utils";
+import { navList, listData, sliderList } from "./data.js";
 
 export default {
-  components: {
-    Carousel
-  },
   data() {
     return {
       // 输入框搜索值
@@ -73,14 +68,67 @@ export default {
       // 导航列表
       navList,
       // 列表数据
-      listData
+      listData,
+      sliderList
     };
+  },
+  methods: {
+    onJump() {
+      jump('details');
+    }
   }
 };
 </script>
 
 <style scoped lang='scss'>
 @import "../style/public.scss";
+
+/* 图片轮播 */
+@mixin box {
+  height: 300px;
+  width: 750px;
+}
+
+.img {
+  /* width: 714px;
+  height: 500px; */
+  @include box;
+}
+.title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #ff0000;
+  font-size: 48px;
+  font-weight: bold;
+  background-color: #eeeeee;
+}
+.slider {
+  flex-direction: row;
+  // margin: 18px;
+  /* width: 714px;
+  height: 500px; */
+  @include box;
+}
+.slider-pages {
+  flex-direction: row;
+  /* width: 714px;
+  height: 500px; */
+  @include box;
+}
+.indicator {
+  width: 714px;
+  height: 30px;
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  item-color: red;
+  item-selected-color: blue;
+  item-size: 20px;
+}
+
+/* 图片轮播end */
+
 .big {
   margin-bottom: 10px;
 }
