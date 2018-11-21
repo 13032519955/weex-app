@@ -8,9 +8,7 @@ export default function (name) {
 
 export const imgUrl = 'http://storage-proxy.emas-poc.com:30090/emas-poc-private.oss-cn-beijing.aliyuncs.com/eweex/app/upload/'
 
-// 是否是开发环境
-const development = process.env.NODE_ENV === 'development';
-
+// 是否是web端
 export const isWeb = WXEnvironment.platform === 'Web';
 
 /**
