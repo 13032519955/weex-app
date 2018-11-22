@@ -26,7 +26,6 @@ export default {
   methods: {
     /** 单击登入 */
     onLogin() {
-      console.log(this.inpVal)
       jump('home');
     }
   }

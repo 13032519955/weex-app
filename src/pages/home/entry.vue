@@ -72,9 +72,12 @@ export default {
       sliderList
     };
   },
+  created() {
+    
+  },
   methods: {
     onJump() {
-      jump('details');
+      jump('details', '12331444');
     }
   }
 };

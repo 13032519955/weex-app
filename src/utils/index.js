@@ -21,10 +21,11 @@ export function toast(message) {
 
 /** 页面跳转
  * @param {String} pageName 页面名
+ * @param {String} value 页面跳转url拼接参数
  */
-export function jump(pageName) {
+export function jump(pageName, value = '') {
   const url = createLink(pageName, {
-    param: 'abc'
+    param: value
   })
   if (isWeb) { // eslint-disable-line
     location.href = url
@@ -36,6 +37,10 @@ export function jump(pageName) {
   }
 }
 
+/**
+ * 获取url参数
+ * @param {string} url 要获取的url
+ */
 export function getQueryParams(url) {
   const splitedUrl = (url || '').split('?')
   if (splitedUrl.length < 2) {
