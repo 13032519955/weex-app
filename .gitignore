@@ -8,6 +8,5 @@
 node_modules
 .temp
 
-dist/
 release/
 package-lock.json
