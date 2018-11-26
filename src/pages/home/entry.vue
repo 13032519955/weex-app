@@ -3,14 +3,14 @@
         <cell class="flex-row header">
             <text class="text">天津市</text>
             <input class="search" string='search' v-model="val" type="text" />
-            <image class="icon" :src="imgUrl + '811d0bfe-f851-4cd4-a859-3bdffced9863/scan.png'" />
-            <image class="icon" :src="imgUrl + '521cd497-8f5a-4cac-b5a8-c4a58968978d/information.png'" />
+            <image class="icon" :src="imgUrl + 'scan.png'" />
+            <image class="icon" :src="imgUrl + 'information.png'" />
         </cell>
         <cell>
           <slider class="slider" interval="3000" auto-play="false" offset-x-accuracy="0.9" infinite="false">
             <div class="slider-pages" v-for="(item, i) in sliderList" :key="'slider-' + i">
               <image class="img" :src="item.pictureUrl" />
-              <text class="title">{{item.title}}</text>
+              <!-- <text class="title">{{item.title}}</text> -->
             </div>
             <indicator class="indicator"></indicator>
           </slider>
@@ -19,7 +19,7 @@
           <div v-for="(item, i) of navList" 
             class="flex-center nav-main"
             :key="'nav-list-' + i">
-            <image :src='item.icon' class="nav-icon"/>
+            <image :src='item.icon' :class="['nav-icon', 'nav-icon-' + i]"/>
             <text class="medium">{{item.label}}</text>
           </div>
         </cell>
@@ -164,13 +164,13 @@ export default {
 }
 
 .nav-icon {
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
+  height: 70px;
+  width: 70px;
+  margin-bottom: 10px;
 }
 
 .nav-main {
-  margin: 5px 10px;
+  margin: 25px 15px 15px 15px;
 }
 
 .nav-list {

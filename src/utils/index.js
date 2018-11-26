@@ -6,7 +6,7 @@ export default function (name) {
   return name
 }
 
-export const imgUrl = 'http://storage-proxy.emas-poc.com:30090/emas-poc-private.oss-cn-beijing.aliyuncs.com/eweex/app/upload/'
+export const imgUrl = 'http://cdn.emas-poc.com/material/ssassss/'
 
 // 是否是web端
 export const isWeb = WXEnvironment.platform === 'Web';

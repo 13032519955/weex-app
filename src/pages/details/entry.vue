@@ -32,11 +32,11 @@
     <cell class="footer flex-row">
       <div class="footer-left flex-row">
         <div @click="onAdvisory" class="icon-box flex-center">
-          <image class="f-icon" :src="imgUrl + 'eca26654-0833-4444-8130-f8f482338c6b/advisory.png'" />
+          <image class="f-icon" :src="imgUrl + 'advisory.png'" />
           <text class="medium">在线咨询</text>
         </div>
         <div @click="onCollection" class="icon-box flex-center">
-          <image class="f-icon" :src="imgUrl + (detailsData.isCollection ? '0b6e0cb9-fc2f-4a26-8df6-42de3d83c26e/collection_s.png' : '9b644647-b774-4ff1-92ff-fc0e0bd5811c/collection.png')" />
+          <image class="f-icon" :src="imgUrl + (detailsData.isCollection ? 'collection_s.png' : 'collection.png')" />
           <text class="medium">{{detailsData.isCollection ? '' : '未'}}收藏</text>
         </div>
       </div>
