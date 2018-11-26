@@ -30,6 +30,7 @@ export function jump(pageName, value = '') {
   if (isWeb) { // eslint-disable-line
     location.href = url
   } else {
+    toast(url)
     navigator.push({
       url,
       animated: 'true'

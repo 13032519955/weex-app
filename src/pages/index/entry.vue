@@ -23,10 +23,14 @@ export default {
       inpVal: ''      
     };
   },
+  created() {
+    weex.requireModule('ManModule').MANServiceCustomEvent('index', 'ReferPageName', 500);
+  },
   methods: {
     /** 单击登入 */
     onLogin() {
       jump('home');
+      weex.requireModule('ManModule').MANServiceUserLogin('userName');
     }
   }
 };

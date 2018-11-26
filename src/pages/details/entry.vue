@@ -37,7 +37,7 @@
         </div>
         <div @click="onCollection" class="icon-box flex-center">
           <image class="f-icon" :src="imgUrl + (detailsData.isCollection ? '0b6e0cb9-fc2f-4a26-8df6-42de3d83c26e/collection_s.png' : '9b644647-b774-4ff1-92ff-fc0e0bd5811c/collection.png')" />
-          <text class="medium">收藏</text>
+          <text class="medium">{{detailsData.isCollection ? '' : '未'}}收藏</text>
         </div>
       </div>
       <text class="footer-right big insured" @click="onInsured">立即投保</text>
@@ -68,6 +68,7 @@ export default {
     onCollection() {
       const { isCollection } = this.detailsData;
       this.detailsData.isCollection = !isCollection;
+      weex.requireModule('ManModule').MANServiceCustomEvent('collection', 'details', 500, 'traceid', 'bhv_type','user_id', 'item_id');
     },
     /** 单击立刻投保 */
     onInsured() {
