@@ -1,32 +1,32 @@
 <template>
   <list class="details-page">
     <cell class="box header">
-      <text class="big">{{detailsData.title}}</text>
-      <text class="medium">{{detailsData.describe}}</text>
+      <text class="big title">{{detailsData.title}}</text>
+      <text class="medium gray">{{detailsData.describe}}</text>
     </cell>
 
     <cell class="box introduction">
-      <text class="medium">产品介绍</text>
+      <text class="medium big">产品介绍</text>
       <div class="flex-center-both">
-        <text class="medium">保障时间: {{detailsData.date}}</text>
+        <text class="medium gray">保障时间: {{detailsData.date}}</text>
         <div class="flex-row">
-          <text class="medium">最终保额: </text>
+          <text class="medium gray">最终保额: </text>
           <text class="big red">{{detailsData.amount}}</text>
         </div>
       </div>
-      <text class="medium">最终保额: {{detailsData.date}}</text>
-      <text class="medium">使用人群: {{detailsData.age}}</text>
-      <text class="medium">可投保城市: {{detailsData.city}}</text>
-      <text class="medium">等待期: {{detailsData.waitDate}}天</text>
-      <div class="flex-row">
-        <text class="medium">价格: </text>
-        <text class="big red">{{detailsData.money}}</text>
+      <text class="medium gray m-top">最终保额: {{detailsData.date}}</text>
+      <text class="medium gray m-top">使用人群: {{detailsData.age}}</text>
+      <text class="medium gray m-top">可投保城市: {{detailsData.city}}</text>
+      <text class="medium gray m-top">等待期: {{detailsData.waitDate}}天</text>
+      <div class="flex-row m-top">
+        <text class="medium gray">价格: </text>
+        <text class="big red">{{detailsData.money}}元</text>
       </div>
     </cell>
     
     <cell class="box">
-      <text class="medium">详情</text>
-      <text class="medium">{{detailsData.details}}</text>
+      <text class="medium big">详情</text>
+      <text class="medium gray">{{detailsData.details}}</text>
     </cell>
 
     <cell class="footer flex-row">
@@ -89,19 +89,33 @@ $fHeight: 100px;
   padding-bottom: $fHeight;
 }
 
+.weex-root .m-top {
+  margin-top: 5px;
+}
+
+.weex-root .big {
+  font-size: $full-size;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
 .header {
-  @include borderBottom(1px, $gray);
+  @include borderBottom(20px, $gray);
+}
+
+.gray {
+  color: $b-1;
 }
 
 .box {
-  padding: 10px;
+  padding: 20px;
 }
 .red {
   color: red;
   margin-left: 10px;
 }
 .introduction {
-  @include borderBottom(15px, $gray);
+  @include borderBottom(20px, $gray);
 }
 
 .footer {
