@@ -1,16 +1,16 @@
 <template>
     <list>
         <cell class="flex-row header">
-            <text class="text">天津市</text>
+            <text class="text" @click="showListCity">{{location}}></text>
             <input class="search" string='search' v-model="val" type="text" />
             <image class="icon" :src="imgUrl + 'scan.png'" />
             <image class="icon" :src="imgUrl + 'information.png'" />
         </cell>
         <cell>
-          <slider class="slider" interval="3000" auto-play="false" offset-x-accuracy="0.9" infinite="false">
+          <slider  class="slider" interval="3000" auto-play="false" offset-x-accuracy="0.9" infinite="false">
             <div class="slider-pages" v-for="(item, i) in sliderList" :key="'slider-' + i">
               <image class="img" :src="item.pictureUrl" />
-              <!-- <text class="title">{{item.title}}</text> -->
+              <text class="title">{{item.title}}</text>
             </div>
             <indicator class="indicator"></indicator>
           </slider>
@@ -49,6 +49,15 @@
             </div>
           </div>
         </cell>
+
+        <cell>
+          <wxc-city ref="wxcCity"
+              :animationType="animationType"
+              :currentLocation="location"
+              :cityStyleType="cityStyleType"
+              @wxcCityItemSelected="citySelect"
+              @wxcCityOnInput="onInput" />
+        </cell>
         
 
     </list>
@@ -57,10 +66,15 @@
 <script>
 import { imgUrl, jump } from "../../utils";
 import { navList, listData, sliderList } from "./data.js";
+import { WxcCity } from 'weex-ui';
 
 export default {
+  components: { WxcCity },
   data() {
     return {
+      animationType: "push",
+      cityStyleType: "list",
+      location: "定位中",
       // 输入框搜索值
       val: "",
       // 图片地址
@@ -72,12 +86,28 @@ export default {
       sliderList
     };
   },
-  created() {
-    
+  mounted() {
+    weex.requireModule('ManModule').MANServicePage('home', 'ReferPageName', 500);
+    // 模拟定位
+    setTimeout(() => {
+      this.location = "杭州";
+    }, 500);
   },
   methods: {
+    showListCity() {
+      this.cityStyleType = "list";
+      this.$refs["wxcCity"].show();
+    },
+    showGroupCity() {
+      this.cityStyleType = "group";
+      this.$refs["wxcCity"].show();
+    },
+    citySelect(e) {
+      if (e.item.cityName)this.location = e.item.cityName
+    },
+    onInput(e) {},
     onJump() {
-      jump('details', '12331444');
+      jump("details", "12331444");
     }
   }
 };

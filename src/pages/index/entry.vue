@@ -24,13 +24,13 @@ export default {
     };
   },
   created() {
-    weex.requireModule('ManModule').MANServiceCustomEvent('index', 'ReferPageName', 500);
+    weex.requireModule('ManModule').MANServicePage('index', 'ReferPageName', 500);
   },
   methods: {
     /** 单击登入 */
     onLogin() {
+      weex.requireModule('ManModule') && weex.requireModule('ManModule').MANServiceUserLogin('userName');
       jump('home');
-      weex.requireModule('ManModule').MANServiceUserLogin('userName');
     }
   }
 };

@@ -59,6 +59,9 @@ export default {
       imgUrl
     };
   },
+  created() {
+    weex.requireModule('ManModule').MANServicePage('details', 'ReferPageName', 500);
+  },
   methods: {
     /** 咨询 */
     onAdvisory() {
