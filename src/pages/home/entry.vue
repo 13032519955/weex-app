@@ -97,8 +97,8 @@ export default {
   },
   methods: {
     showListCity() {
-      this.cityStyleType = "list";
-      this.$refs["wxcCity"].show();
+      // this.cityStyleType = "list";
+      // this.$refs["wxcCity"].show();
     },
     showGroupCity() {
       this.cityStyleType = "group";

@@ -65,7 +65,9 @@ export default {
   methods: {
     /** 咨询 */
     onAdvisory() {
-      jump('chat');
+      weex.requireModule('ManModule').MANServiceCustomEvent('im', 'details', 500, 'traceid', 'bhv_type','user_id', 'item_id');
+      toast('聊天室')
+      // jump('chat');
     },
     /** 单击收藏 */
     onCollection() {
@@ -75,6 +77,7 @@ export default {
     },
     /** 单击立刻投保 */
     onInsured() {
+      weex.requireModule('ManModule').MANServiceCustomEvent('buy', 'details', 500, 'traceid', 'bhv_type','user_id', 'item_id');
       toast('投保成功')
     }
   }

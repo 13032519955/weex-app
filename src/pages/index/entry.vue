@@ -29,7 +29,8 @@ export default {
   methods: {
     /** 单击登入 */
     onLogin() {
-      weex.requireModule('ManModule') && weex.requireModule('ManModule').MANServiceUserLogin('userName');
+      weex.requireModule('ManModule').MANServiceCustomEvent('login', 'details', 500, 'traceid', 'bhv_type','user_id', 'item_id');
+      weex.requireModule('ManModule').MANServiceUserLogin('userName');
       jump('home');
     }
   }
